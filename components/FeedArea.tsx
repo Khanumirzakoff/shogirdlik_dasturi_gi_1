@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect, useMemo } from 'react';
 import { AppContext } from '../contexts/AppContext';
 import FeedCard from './FeedCard';
 import { TaskType } from '../types';
@@ -13,15 +13,17 @@ const FeedArea: React.FC = () => {
   const { feedItems, selectedTaskFilter, searchTerm } = context;
 
   // Filter feed items based on selected filter and search term
-  const filteredItems = feedItems.filter(item => {
-    const matchesFilter = !selectedTaskFilter || item.type === selectedTaskFilter;
-    const matchesSearch = !searchTerm || 
-      item.userName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      (item.type === TaskType.BOOK_READING && 'bookTitle' in item && 
-       item.bookTitle.toLowerCase().includes(searchTerm.toLowerCase()));
-    
-    return matchesFilter && matchesSearch;
-  });
+  const filteredItems = useMemo(() => {
+    return feedItems.filter(item => {
+      const matchesFilter = !selectedTaskFilter || item.type === selectedTaskFilter;
+      const matchesSearch = !searchTerm || 
+        item.userName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        (item.type === TaskType.BOOK_READING && 'bookTitle' in item && 
+         item.bookTitle.toLowerCase().includes(searchTerm.toLowerCase()));
+      
+      return matchesFilter && matchesSearch;
+    });
+  }, [feedItems, selectedTaskFilter, searchTerm]);
 
   const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
     const element = e.currentTarget;
