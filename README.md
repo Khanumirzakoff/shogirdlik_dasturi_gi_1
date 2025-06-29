@@ -1,0 +1,1 @@
+# shogirdlik_dasturi_gi_1
