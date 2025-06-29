@@ -1,0 +1,10 @@
+{
+  "requestFramePermissions": [
+    "camera",
+    "microphone",
+    "geolocation"
+  ],
+  "name": "Vazifa Trekeri 2",
+  "description": "",
+  "prompt": ""
+}

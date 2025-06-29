@@ -1,0 +1,128 @@
+
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shogirdlik dasturi</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Futura', 'SF Pro Display', 'Roboto', 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+      font-weight: 300; /* Ensures thin font globally */
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    /* Style for the map container */
+    .map-container {
+      background-color: #f3f4f6; /* fallback bg for map (gray-100) */
+    }
+    /* Leaflet map specific styles */
+    .leaflet-container {
+        border-radius: 0px !important;
+    }
+    .leaflet-control-zoom-in, .leaflet-control-zoom-out {
+        border-radius: 2px !important;
+        border: 1px solid #ccc !important;
+    }
+    .leaflet-control-zoom a {
+        color: #333 !important;
+    }
+    .map-container > .leaflet-control-container > .leaflet-control-zoom {
+        display: none;
+    }
+    /* Leaflet attribution visibility fix */
+    .leaflet-control-attribution {
+        font-size: 10px !important;
+    }
+    .leaflet-control-attribution a {
+        color: #0078A8 !important;
+    }
+
+    /* Toast Animation from App.tsx */
+    .animate-fadeInOut {
+      animation: fadeIn 0.3s ease-out, fadeOut 0.3s ease-in 2.7s forwards;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translate(-50%, 10px); }
+      to { opacity: 1; transform: translate(-50%, 0); }
+    }
+    @keyframes fadeOut {
+      from { opacity: 1; transform: translate(-50%, 0); }
+      to { opacity: 0; transform: translate(-50%, 10px); }
+    }
+
+    /* Scroll Affordance Shadows */
+    .scroll-shadow-container {
+      position: relative;
+    }
+    .scroll-shadow-container::before,
+    .scroll-shadow-container::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 12px;
+      z-index: 10;
+      pointer-events: none;
+      transition: opacity 0.2s ease-in-out;
+      border-radius: 0px !important;
+    }
+    .scroll-shadow-container::before {
+      top: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.10), transparent);
+      opacity: 0;
+    }
+    .scroll-shadow-container::after {
+      bottom: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.10), transparent);
+      opacity: 0;
+    }
+    .scroll-shadow-container.show-top-shadow::before {
+      opacity: 1;
+    }
+    .scroll-shadow-container.show-bottom-shadow::after {
+      opacity: 1;
+    }
+
+    /* Shake Animation from App.tsx */
+    .animate-shake {
+      animation: shake 0.4s cubic-bezier(.36,.07,.19,.97) both;
+      transform: translate3d(0, 0, 0);
+    }
+    @keyframes shake {
+      10%, 90% { transform: translate3d(-1px, 0, 0); }
+      20%, 80% { transform: translate3d(2px, 0, 0); }
+      30%, 50%, 70% { transform: translate3d(-3px, 0, 0); }
+      40%, 60% { transform: translate3d(3px, 0, 0); }
+    }
+
+  </style>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.1.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.1.0/",
+    "react/": "https://esm.sh/react@^19.1.0/",
+    "leaflet": "https://esm.sh/leaflet@^1.9.4",
+    "idb": "https://esm.sh/idb@^8.0.3"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body class="bg-white text-slate-900 antialiased">
+  <div id="root"></div>
+  <!-- Leaflet.js script removed from here as it's loaded via importmap -->
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
