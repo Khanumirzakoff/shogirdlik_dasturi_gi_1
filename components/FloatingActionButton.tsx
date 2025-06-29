@@ -1,13 +1,11 @@
-
-
 import React from 'react';
-import { PlusIcon } from './components/icons/PlusIcon';
-import { UZBEK_STRINGS } from './constants';
-import { TaskType } from './types';
-import { RunningManIcon } from './components/icons/RunningManIcon';
-import { AlarmClockIcon } from './components/icons/AlarmClockIcon';
-import { BookOpenIcon } from './components/icons/BookOpenIcon';
-import { ChecklistIcon } from './components/icons/ChecklistIcon';
+import { PlusIcon } from './icons/PlusIcon';
+import { UZBEK_STRINGS } from '../constants';
+import { TaskType } from '../types';
+import { RunningManIcon } from './icons/RunningManIcon';
+import { AlarmClockIcon } from './icons/AlarmClockIcon';
+import { BookOpenIcon } from './icons/BookOpenIcon';
+import { ChecklistIcon } from './icons/ChecklistIcon';
 
 interface FloatingActionButtonProps {
   onClick: () => void;
